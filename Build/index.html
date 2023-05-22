@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Unity WebGL Player | Unity WebXR Export</title>
-    <meta name="description" content="Complete interactive 3D scene demo made in Unity and exported to WebXR with the WebXR template of the Unity WebXR Export">
-    <link rel="shortcut icon" href="TemplateData/favicon.ico">
-    <link rel="stylesheet" href="TemplateData/style.css">
+    <meta
+      name="description"
+      content="Complete interactive 3D scene demo made in Unity and exported to WebXR with the WebXR template of the Unity WebXR Export"
+    />
+    <link rel="shortcut icon" href="TemplateData/favicon.ico" />
+    <link rel="stylesheet" href="TemplateData/style.css" />
+    <script src="https://launchar.app/sdk/v1?key=PgCkcRz0dyNiU3cWrOBw3PIB7cFYnuu8&redirect=true"></script>
   </head>
   <body>
     <div id="unity-container">
       <div id="unity-canvas-container">
-        <canvas id="unity-canvas" style="width: 100%; height: 100%;"></canvas>
+        <canvas id="unity-canvas" style="width: 100%; height: 100%"></canvas>
       </div>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
@@ -23,7 +27,15 @@
         <div id="unity-webgl-logo"></div>
         <button id="entervr" value="Enter VR" disabled>VR</button>
         <button id="enterar" value="Enter AR" disabled>AR</button>
-        <div id="unity-webxr-link">Using <a href="https://github.com/De-Panther/unity-webxr-export" target="_blank" title="WebXR Export">WebXR Export</a></div>
+        <div id="unity-webxr-link">
+          Using
+          <a
+            href="https://github.com/De-Panther/unity-webxr-export"
+            target="_blank"
+            title="WebXR Export"
+            >WebXR Export</a
+          >
+        </div>
         <div id="unity-build-title">Unity WebXR Export</div>
       </div>
     </div>
@@ -47,7 +59,6 @@
       var progressBarFull = document.querySelector("#unity-progress-bar-full");
       var fullscreenButton = document.querySelector("#unity-fullscreen-button");
       var unityInstance = null;
-      
 
       canvasContainer.style.width = "700px";
       canvasContainer.style.height = "400px";
@@ -58,37 +69,54 @@
       script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + "%";
-        }).then((instance) => {
-          unityInstance = instance;
-          loadingBar.style.display = "none";
-          if (fullscreenButton)
-          {
-            fullscreenButton.onclick = () => {
-              unityInstance.SetFullscreen(1);
-            };
-          }
-        }).catch((message) => {
-          alert(message);
-        });
+        })
+          .then((instance) => {
+            unityInstance = instance;
+            loadingBar.style.display = "none";
+            if (fullscreenButton) {
+              fullscreenButton.onclick = () => {
+                unityInstance.SetFullscreen(1);
+              };
+            }
+          })
+          .catch((message) => {
+            alert(message);
+          });
       };
       document.body.appendChild(script);
 
-      let enterARButton = document.getElementById('enterar');
-      let enterVRButton = document.getElementById('entervr');
+      let enterARButton = document.getElementById("enterar");
+      let enterVRButton = document.getElementById("entervr");
 
-      document.addEventListener('onARSupportedCheck', function (event) {
-        enterARButton.disabled = !event.detail.supported;
-      }, false);
-      document.addEventListener('onVRSupportedCheck', function (event) {
-        enterVRButton.disabled = !event.detail.supported;
-      }, false);
+      document.addEventListener(
+        "onARSupportedCheck",
+        function (event) {
+          enterARButton.disabled = !event.detail.supported;
+        },
+        false
+      );
+      document.addEventListener(
+        "onVRSupportedCheck",
+        function (event) {
+          enterVRButton.disabled = !event.detail.supported;
+        },
+        false
+      );
 
-      enterARButton.addEventListener('click', function (event) {
-        unityInstance.Module.WebXR.toggleAR();
-      }, false);
-      enterVRButton.addEventListener('click', function (event) {
-        unityInstance.Module.WebXR.toggleVR();
-      }, false);
+      enterARButton.addEventListener(
+        "click",
+        function (event) {
+          unityInstance.Module.WebXR.toggleAR();
+        },
+        false
+      );
+      enterVRButton.addEventListener(
+        "click",
+        function (event) {
+          unityInstance.Module.WebXR.toggleVR();
+        },
+        false
+      );
     </script>
   </body>
 </html>
