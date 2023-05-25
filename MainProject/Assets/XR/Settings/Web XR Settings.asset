@@ -15,4 +15,4 @@ MonoBehaviour:
   VRRequiredReferenceSpace: 2
   VROptionalFeatures: -1
   ARRequiredReferenceSpace: 1
-  AROptionalFeatures: 1
+  AROptionalFeatures: -1

@@ -21,7 +21,8 @@ namespace WebXR
     public enum ExtraFeatureTypes
     {
       hit_test = 1,
-      hand_tracking = 2
+      hand_tracking = 2,
+      dom_overlay = 3,
     }
 
     [Header("VR Settings")]
